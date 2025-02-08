@@ -1,5 +1,5 @@
 import unittest
-from extract import extract_markdown_images, extract_markdown_links
+from extract import extract_markdown_images, extract_markdown_links, extract_title
 
 
 class TestExtract(unittest.TestCase):
@@ -30,6 +30,15 @@ class TestExtract(unittest.TestCase):
         result_links = extract_markdown_links(text)
         self.assertEqual(result_images[0], ("image", "http://img.com"))
         self.assertEqual(result_links[0], ("link", "http://link.com"))
+
+    # Title
+    def test_extract_title(self):
+        markdown = "# Hello"
+        result = extract_title(markdown)
+        self.assertEqual(result, "Hello")
+        markdown = "## Hello"
+        result = extract_title(markdown)
+        self.assertEqual(result, "Hello")
 
 
 if __name__ == "__main__":
