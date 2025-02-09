@@ -1,6 +1,6 @@
 import os
 import shutil
-from page_gen import generate_page
+from page_gen import generate_page, generate_pages_recursive
 
 
 def copy_static(src: str, dest: str):
@@ -24,10 +24,10 @@ def main():
     dest = os.path.join(project_root, "public")
     copy_static(src, dest)
 
-    generate_page(
-        os.path.join(project_root, "content", "index.md"),
+    generate_pages_recursive(
+        os.path.join(project_root, "content"),
         os.path.join(project_root, "template.html"),
-        os.path.join(project_root, "public", "index.html"),
+        os.path.join(project_root, "public"),
     )
 
 
