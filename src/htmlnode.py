@@ -2,8 +2,8 @@ class HTMLNode:
     def __init__(self, tag=None, text=None, children=None, props=None):
         self.tag = tag
         self.text = text
-        self.children = children
-        self.props = props
+        self.children = children if children is not None else []
+        self.props = props if props is not None else {}
 
     def to_html(self):
         raise NotImplementedError
@@ -39,6 +39,8 @@ class LeafNode(HTMLNode):
 
 class ParentNode(HTMLNode):
     def __init__(self, tag, children, props=None):
+        if children is None:
+            children = []
         super().__init__(tag, None, children, props)
 
     def to_html(self):

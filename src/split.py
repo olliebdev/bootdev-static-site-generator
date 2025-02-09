@@ -70,7 +70,8 @@ def split_nodes_link(old_nodes):
             if start_text != "":
                 new_nodes.append(TextNode(start_text, TextType.TEXT))
             new_nodes.append(TextNode(link_text, TextType.TEXT))
-            new_nodes.append(TextNode(link, TextType.LINK))
+            new_nodes.append(TextNode(" ", TextType.TEXT))
+            new_nodes.append(TextNode(link_text, TextType.LINK, url=link))
             text = end_text
             match = re.search(r"\[(.*?)\]\((.*?)\)", text)
         if text != "":

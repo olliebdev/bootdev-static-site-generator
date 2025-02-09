@@ -36,7 +36,10 @@ class TestExtract(unittest.TestCase):
         markdown = "# Hello"
         result = extract_title(markdown)
         self.assertEqual(result, "Hello")
-        markdown = "## Hello"
+        markdown = " # Hello "
+        result = extract_title(markdown)
+        self.assertEqual(result, "Hello")
+        markdown = "   # Hello   "
         result = extract_title(markdown)
         self.assertEqual(result, "Hello")
 
